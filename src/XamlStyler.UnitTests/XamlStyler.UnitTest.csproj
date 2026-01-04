@@ -359,5 +359,14 @@
   <None Update="TestFiles\TestXmlSpaceHandling.testxaml">
     <CopyToOutputDirectory>Always</CopyToOutputDirectory>
   </None>
+  <None Update="TestFiles\TestTreatCommentWithTagAsMultiline.testxaml">
+    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+  </None>
+  <None Update="TestFiles\TestTreatCommentWithTagAsMultiline_false.expected">
+    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+  </None>
+  <None Update="TestFiles\TestTreatCommentWithTagAsMultiline_true.expected">
+    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+  </None>
 </ItemGroup>
 </Project>
