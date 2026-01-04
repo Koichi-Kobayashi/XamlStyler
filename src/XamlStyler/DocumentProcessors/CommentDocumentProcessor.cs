@@ -47,21 +47,26 @@ namespace Xavalon.XamlStyler.DocumentProcessors
 
                 if (content.Contains("\n"))
                 {
-                    output.Append(String.Join(Environment.NewLine, content.GetLines().Select(_ => _.TrimEnd(' '))));
+                    // Add newline after <!-- if content starts with '<'
+                    output.Append(Environment.NewLine);
+                    var contentIndentString = this.indentService.GetIndentString(xmlReader.Depth + 1);
+                    var lines = content.GetLines().Select(_ => _.TrimEnd(' ')).Where(_ => !string.IsNullOrWhiteSpace(_)).ToList();
+                    for (int i = 0; i < lines.Count; i++)
+                    {
+                        var line = lines[i];
+                        bool isFirstOrLast = (i == 0) || (i == lines.Count - 1);
+                        string indent = isFirstOrLast ? currentIndentString : contentIndentString;
+                        output.Append(indent).Append(line.TrimStart()).Append(Environment.NewLine);
+                    }
 
-                    if (content.TrimEnd(' ').EndsWith("\n", StringComparison.Ordinal))
-                    {
-                        output.Append(currentIndentString);
-                    }
-                    else
-                    {
-                        // Ensure newline before --> for multiline comments with tags
-                        output.Append(Environment.NewLine).Append(currentIndentString);
-                    }
+                    // Ensure newline before --> for multiline comments with tags
+                    output.Append(currentIndentString);
                 }
                 else
                 {
-                    output.Append(content);
+                    // Add newline after <!-- if content starts with '<'
+                    output.Append(Environment.NewLine);
+                    output.Append(currentIndentString).Append(content.TrimStart());
                     // Ensure newline before --> for single-line comments with tags
                     output.Append(Environment.NewLine).Append(currentIndentString);
                 }
