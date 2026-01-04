@@ -34,7 +34,41 @@ namespace Xavalon.XamlStyler.DocumentProcessors
                 output.Append(Environment.NewLine);
             }
 
-            if (content.Contains("<") && content.Contains(">"))
+            // Check if comment starts with '<' and option is enabled
+            bool isMultilineCommentWithTag = this.options.TreatCommentWithTagAsMultiline 
+                && !string.IsNullOrWhiteSpace(content) 
+                && content.TrimStart().StartsWith("<", StringComparison.Ordinal);
+
+            if (isMultilineCommentWithTag)
+            {
+                // Treat comment with tag as multiline: ensure --> is on a new line
+                output.Append(currentIndentString);
+                output.Append("<!--");
+
+                if (content.Contains("\n"))
+                {
+                    output.Append(String.Join(Environment.NewLine, content.GetLines().Select(_ => _.TrimEnd(' '))));
+
+                    if (content.TrimEnd(' ').EndsWith("\n", StringComparison.Ordinal))
+                    {
+                        output.Append(currentIndentString);
+                    }
+                    else
+                    {
+                        // Ensure newline before --> for multiline comments with tags
+                        output.Append(Environment.NewLine).Append(currentIndentString);
+                    }
+                }
+                else
+                {
+                    output.Append(content);
+                    // Ensure newline before --> for single-line comments with tags
+                    output.Append(Environment.NewLine).Append(currentIndentString);
+                }
+
+                output.Append("-->");
+            }
+            else if (content.Contains("<") && content.Contains(">"))
             {
                 output.Append(currentIndentString);
                 output.Append("<!--");
