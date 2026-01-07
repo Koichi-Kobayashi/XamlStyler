@@ -34,9 +34,6 @@
                  HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
       <StackPanel>
         <TextBox Margin="1 2 3 4"></TextBox>
-        <!--<Image
-            Width="20" Height="20" Margin="4,0,12,0" VerticalAlignment="Center" RenderOptions.BitmapScalingMode="HighQuality"
-            Source="{Binding FullPath, Converter={StaticResource FileIconConverter}, Mode=OneWay}" />-->
       </StackPanel>
     </DockPanel>
   </Window>
