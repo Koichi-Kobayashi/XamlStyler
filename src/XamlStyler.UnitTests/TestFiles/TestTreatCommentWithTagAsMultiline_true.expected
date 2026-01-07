@@ -34,6 +34,14 @@
             <!--
             <Setter Property="Padding" Value=" 2,4 " />
             -->
+            <!--
+            <Setter Property="Padding"
+                    Value=" 2,4 " />
+            -->
+            <!--
+            <Setter Property="Padding"
+                    Value=" 2,4 " />
+            -->
           </Trigger>
         </Style.Triggers>
       </Style>
@@ -48,6 +56,9 @@
                HorizontalAlignment="Stretch"
                VerticalAlignment="Stretch">
       <StackPanel>
+        <!--
+        <TextBox Margin="4"></TextBox>
+        -->
         <TextBox Margin="1 2 3 4" />
         <!--
         <Image Width="20"

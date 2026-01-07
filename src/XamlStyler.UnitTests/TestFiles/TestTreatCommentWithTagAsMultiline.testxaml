@@ -26,13 +26,19 @@
             <Setter Property="Margin" Value=" 2" />
 			-->
             <!--<Setter Property="Padding" Value=" 2,4 " />-->
-          </Trigger>
+            <!--<Setter Property="Padding"
+                        Value=" 2,4 " />-->
+            <!--<Setter 
+                    Property="Padding"
+                    Value=" 2,4 " />-->
+		  </Trigger>
         </Style.Triggers>
       </Style>
     </Window.Resources>
     <DockPanel Grid.Row="0" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" Width="Auto" Height="Auto" Margin="0,0,0,0"
                  HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
       <StackPanel>
+        <!--<TextBox Margin="4"></TextBox>-->
         <TextBox Margin="1 2 3 4"></TextBox>
         <!--<Image
             Width="20" Height="20" Margin="4,0,12,0" VerticalAlignment="Center" RenderOptions.BitmapScalingMode="HighQuality"
