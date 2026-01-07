@@ -107,8 +107,6 @@ namespace Xavalon.XamlStyler.Options
 
         int CommentSpaces { get; set; }
 
-        bool TreatCommentWithTagAsMultiline { get; set; }
-
         #endregion Misc
 
         #region Configuration
